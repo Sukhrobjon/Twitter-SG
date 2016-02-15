@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BDBOAuth1Manager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,6 +42,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        
+        TwitterClient.sharedInstance.fetchAccessTokenWithPath("oath/access_token", method: "POST", requestToken: BDBOAuth1Credential(queryString: url.query), success: { (accessToken: BDBOAuth1Credential!) -> Void in
+            print("Got the access token!")
+            TwitterClient.sharedInstance.requestSerializer.saveAccessToken(accessToken)
+            
+            TwitterClient.sharedInstance.GET("1.1/statuses/home_timeline.json", parameters: nil, success: { (operation:NSURLSessionDataTask, response: AnyObject) -> Void in
+                print("user:/(response)")
+                }, failure: { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                    print("error getting current user")
+            })
+            
+            
+            }) { (error: NSError!) -> Void in
+                print("Failed to receive access token")
+        }
+        return true
+    }
 
 }
 

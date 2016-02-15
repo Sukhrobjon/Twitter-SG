@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         
         TwitterClient.sharedInstance.fetchRequestTokenWithPath("oauth/request_token", method: "GET", callbackURL: NSURL(string: "cptwitterdemo://oauth"), scope: nil, success: { (requestToken: BDBOAuth1Credential!) -> Void in
             print("Got the request token");
-            var authURL = NSURL(string: "http://api.twitter.com/oauth/authorise?oauth_token=\(requestToken.token)")
+            var authURL = NSURL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken.token)")
             UIApplication.sharedApplication().openURL(authURL!)
         })
             { (error: NSError!) -> Void in
