@@ -4,6 +4,6 @@ platform :ios, '8.0'
  use_frameworks!
 
 target 'Twitter' do
-  pod ‘AFNetworking’, ‘~> 2.6’
+  pod ‘AFNetworking’
   pod “BDBOAuth1Manager”
 end
