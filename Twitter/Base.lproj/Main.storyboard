@@ -37,7 +37,7 @@
         <!--Tweets View Controller-->
         <scene sceneID="UbC-jB-1Vt">
             <objects>
-                <viewController id="nE8-Me-gkJ" customClass="TweetsViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TweetsViewController" id="nE8-Me-gkJ" customClass="TweetsViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nhu-Fp-xOe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
